@@ -1,0 +1,148 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+		<link href="../css/lightbox.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/portfolio_1.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<script>
+			$( document ).ready(function() {
+				$('.grid').masonry({
+					itemSelector: '.grid-item',
+					columnWidth: 0
+				});
+			});
+		</script>
+		
+		
+		<section id="nav">
+			<a href="../index.html">
+				<div id="img-cont">
+					<img src="../assets/images/logo.png" alt="">
+				</div>
+			</a>
+			<ul class="egmenu">
+				<li><a href="../index.html">Home</a></li>
+				<li>
+					<a href="#" class="has-sub">Projects</a>
+					<ul>
+					  <li><a href="../portfolio_page_1/index.html">Websites</a></li>
+					  <li><a href="../portfolio_page_2/index.html">Games</a></li>
+					  <li><a href="../portfolio_page_3/index.html">Arduino</a></li>
+					</ul>
+				</li>
+				<li><a href="../about_page/index.html">About</a></li>
+				<li id="mobile">
+					<a href="#" class="has-sub">Menu</a>
+					<ul>
+					  <li><a href="../index.html">Home</a></li>
+					  <li><a href="../about_page/index.html">About</a></li>
+					  <li><a href="../portfolio_page_1/index.html">Websites</a></li>
+					  <li><a href="../portfolio_page_2/index.html">Games</a></li>
+					  <li><a href="../portfolio_page_3/index.html">Arduino</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>    
+		
+		<section id="hero-img">
+			<div id="content">
+				<div id="text">
+					<h1>Websites</h1>
+				</div>
+				
+			</div>
+
+			<!-- <img src="../assets/images/matrix.png" alt=""> -->
+		</section>
+		<section id="portfolio">
+			<div class="container">
+				<h1>Photography Website</h1>
+				<a class="anchor" id="photography_website"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>This is a website I created that serves as a photography portfolio. I used JavaScript to create some interactive elements such as, an image pop up feature and used CSS for parallax scrolling. </p>
+					</div>
+					<a href="../assets/images/port_1/photo_cover.png" data-lightbox="photography_website">
+						<div class="grid-item"><img src="../assets/images/port_1/photo_cover.png" alt=""></div>
+					</a>
+					<a id="mid-screen" href="../assets/images/port_1/photo_popup.png" data-lightbox="photography_website">
+						<div class="grid-item"><img src="../assets/images/port_1/photo_popup.png" alt=""></div>
+					</a>
+					<a  href="../assets/images/port_1/photo_home.png" data-lightbox="photography_website">
+						<div class="grid-item grid-item--width2"><img src="../assets/images/port_1/photo_home.png" alt=""></div>
+					</a>
+					<a id="small-screen" href="../assets/images/port_1/photo_work.png" data-lightbox="photography_website">
+						<div class="grid-item err"><img src="../assets/images/port_1/photo_work.png" alt=""></div>
+					</a>
+				</div>
+
+				<h1>Concept Website</h1>
+				<a class="anchor" id="concept_website"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>I am currently working on this website for Two Steel Fabricators and Designers. My client would like the website to display their current projects and information about the company. The website will be mobile friendly when it is completed.</p>
+					</div>
+					<a href="../assets/images/port_1/mobile_ts.png" data-lightbox="concept_website">
+						<div class="grid-item long"><img src="../assets/images/port_1/mobile_ts.png" alt=""></div>
+					</a>
+					<a id="mid-screen" href="../assets/images/port_1/home_ts.png" data-lightbox="concept_website">
+						<div class="grid-item"><img src="../assets/images/port_1/home_ts.png" alt=""></div>
+					</a>
+					<a id="small-screen" href="../assets/images/port_1/grid_ts.png" data-lightbox="concept_website">
+						<div class="grid-item"><img src="../assets/images/port_1/grid_ts.png" alt=""></div>
+					</a>
+					<a href="../assets/images/port_1/thumb_mobile_grid_ts.png" data-lightbox="concept_website">
+						<div class="grid-item"><img src="../assets/images/port_1/thumb_mobile_grid_ts.png" alt=""></div>
+					</a>
+				</div>
+				
+				<h1 id="port">Portfolio Website</h1>
+				<a class="anchor" id="portfolio_website"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>This website served as my portfolio before this one. I used JavaScript to create an image pop up feature and CSS media queries to make my website mobile friendly. If the user clicks on an image, information about that project would be displayed along with its source code. </p>
+					</div>
+					<a href="../assets/images/port_1/port_mobile_proj.png" data-lightbox="portfolio_website">
+						<div class="grid-item long"><img src="../assets/images/port_1/port_mobile_proj.png" alt=""></div>
+					</a>
+					<a href="../assets/images/port_1/port_mobile_code.png" data-lightbox="portfolio_website">
+						<div class="grid-item long"><img src="../assets/images/port_1/port_mobile_code.png" alt=""></div>
+					</a>
+					<a id="mid-screen" href="../assets/images/port_1/port_home.png" data-lightbox="portfolio_website">
+						<div class="grid-item"><img src="../assets/images/port_1/port_home.png" alt=""></div>
+					</a>
+					<a id="small-screen" class="port-small" href="../assets/images/port_1/port_home1.png" data-lightbox="portfolio_website">
+						<div class="grid-item long port-small"><img src="../assets/images/port_1/port_home1.png" alt=""></div>
+					</a>
+				</div>
+
+				<h1>Presentation Website</h1>
+				<a class="anchor" id="presentation_website"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>I created this website for a presentation I did on HTML5 animations. The JavaScript library Reveal.js allowed me to include formatted code and make my website responsive.</p>
+					</div>
+					<a id="small-screen" href="../assets/images/port_1/pres_code.png" data-lightbox="presentation_website">
+						<div class="grid-item"><img src="../assets/images/port_1/pres_code.png" alt=""></div>
+					</a>
+					<a href="../assets/images/port_1/pres_img.png" data-lightbox="presentation_website">
+						<div class="grid-item"><img src="../assets/images/port_1/pres_img.png" alt=""></div>
+					</a>
+					<a href="../assets/images/port_1/pres_home.png" data-lightbox="presentation_website">
+						<div class="grid-item grid-item--width2 "><img src="../assets/images/port_1/pres_home.png" alt=""></div>
+					</a>
+					<a id="mid-screen" href="../assets/images/port_1/pres_css.png" data-lightbox="presentation_website">
+						<div class="grid-item err"><img src="../assets/images/port_1/pres_css.png" alt=""></div>
+					</a>
+				</div>
+			</div>
+		</section>
+		<footer>
+			
+		</footer>
+		<script src="../js/lightbox.js"></script>
+	</body>
+</html>

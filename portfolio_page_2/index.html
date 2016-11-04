@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+		<link href="../css/lightbox.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/portfolio_2.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<script>
+			$( document ).ready(function() {
+				$('.grid').masonry({
+					itemSelector: '.grid-item',
+					columnWidth: 0
+				});
+			});
+		</script>
+		<section id="nav">
+			<a href="../index.html">
+				<div id="img-cont">
+					<img src="../assets/images/logo.png" alt="">
+				</div>
+			</a>
+			<ul class="egmenu">
+				<li><a href="../index.html">Home</a></li>
+				<li>
+					<a href="#" class="has-sub">Projects</a>
+					<ul>
+					  <li><a href="../portfolio_page_1/index.html">Websites</a></li>
+					  <li><a href="../portfolio_page_2/index.html">Games</a></li>
+					  <li><a href="../portfolio_page_3/index.html">Arduino</a></li>
+					</ul>
+				</li>
+				<li><a href="../about_page/index.html">About</a></li>
+				<li id="mobile">
+					<a href="#" class="has-sub">Menu</a>
+					<ul>
+					  <li><a href="../index.html">Home</a></li>
+					  <li><a href="../about_page/index.html">About</a></li>
+					  <li><a href="../portfolio_page_1/index.html">Websites</a></li>
+					  <li><a href="../portfolio_page_2/index.html">Games</a></li>
+					  <li><a href="../portfolio_page_3/index.html">Arduino</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>      	
+		
+		<section id="hero-img">
+			<div id="content">
+				<div id="text">
+					<h1>Games</h1>
+				</div>
+				
+			</div>
+			<!-- <img src="../assets/images/matrix.png" alt=""> -->
+		</section>
+		<section id="portfolio">
+			<div class="container">
+				<h1>Nodes</h1>
+				<a class="anchor" id="nodes"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>There are 100 nodes rendered onto the screen and if a node is within 100 pixels from another node a line is drawn between them. By having this basic rule, the program produces distinct patterns.</p>
+					</div>
+					<a class="small-screen mid-screen" href="../assets/images/port_2/nodes.gif" data-lightbox="games">
+						<div class="grid-item large"><img src="../assets/images/port_2/nodes.png" alt=""></div>
+					</a>
+					
+					<a href="https://github.com/Frcerv11/Nodes"><div class="grid-item err"><img src="../assets/images/port_2/code_img.png" alt=""></div></a>
+				</div>
+				<h1>Matrix</h1>
+				<a class="anchor" id="matrix"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>This is a program I made for my generative media class. The program outputs random words from the code it was written with onto the screen.</p>
+					</div>
+					<a class="small-screen mid-screen" href="../assets/images/port_2/matrix.gif" data-lightbox="games">
+						<div class="grid-item large"><img src="../assets/images/port_2/matrix.png" alt=""></div>
+					</a>
+					
+					<a href="https://github.com/Frcerv11/Matrix"><div class="grid-item err"><img src="../assets/images/port_2/code_img.png" alt=""></div></a>
+				</div>
+
+				<h1>Space Tone</h1>
+				<a class="anchor" id="space_tones"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>In this program each object animated on the screen revolves in proportion to one of the eight planets and pluto. If an object crosses a particular point, it will play a distinct note provided by the Tone JS library.</p>
+					</div>
+					<a class="small-screen mid-screen" href="../assets/images/port_2/space_tone.gif" data-lightbox="games">
+						<div class="grid-item large"><img src="../assets/images/port_2/space.png" alt=""></div>
+					</a>
+					<a href="https://github.com/Frcerv11/SpaceTones"><div class="grid-item err"><img src="../assets/images/port_2/code_img.png" alt=""></div></a>
+				</div>
+				
+				<h1>Pong</h1>
+				<a class="anchor" id="pong"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>I recreated the classic video game pong using JavaScript. I built an AI system that plays against a human player along with a scoreboard that keeps track of both players&apos; scores.</p>
+					</div>
+					<a class="small-screen mid-screen" href="../assets/images/port_2/pong.gif" data-lightbox="games">
+						<div class="grid-item large"><img src="../assets/images/port_2/pong.png" alt=""></div>
+					</a>
+					<a href="https://github.com/Frcerv11/Pong"><div class="grid-item err"><img src="../assets/images/port_2/code_img.png" alt=""></div></a>		
+				</div>
+				<h1>Breakout</h1>
+				<a class="anchor" id="breakout"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>This is a game called Breakout that I recreated using JavaScript. The aim is to hit the ball with the paddle and remove the grid of bricks that are rendered on the screen. </p>
+					</div>
+					<a class="small-screen mid-screen" href="../assets/images/port_2/breakout.gif" data-lightbox="games">
+						<div class="grid-item large"><img src="../assets/images/port_2/breakout.png" alt=""></div>
+					</a>
+
+					<a href="https://github.com/Frcerv11/Breakout"><div class="grid-item err"><img src="../assets/images/port_2/code_img.png" alt=""></div></a>
+				</div>
+			</div>
+		</section>
+		<footer>
+			
+		</footer>
+		<script>
+		    $('.has-sub').click( function(e) {
+			    e.preventDefault();
+			    $(this).parent().toggleClass('tap');
+			});
+		</script>
+		<script src="../js/lightbox.js"></script>
+	</body>
+</html>

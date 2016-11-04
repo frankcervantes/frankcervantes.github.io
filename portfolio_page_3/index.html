@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+		<link href="../css/lightbox.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/portfolio_3.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<script>
+			$( document ).ready(function() {
+				$('.grid').masonry({
+					itemSelector: '.grid-item',
+					columnWidth: 0
+				});
+			});
+		</script>
+
+		<section id="nav">
+			<a href="../index.html">
+				<div id="img-cont">
+					<img src="../assets/images/logo.png" alt="">
+				</div>
+			</a>
+			<ul class="egmenu">
+				<li><a href="../index.html">Home</a></li>
+				<li>
+					<a href="#" class="has-sub">Projects</a>
+					<ul>
+					  <li><a href="../portfolio_page_1/index.html">Websites</a></li>
+					  <li><a href="../portfolio_page_2/index.html">Games</a></li>
+					  <li><a href="../portfolio_page_3/index.html">Arduino</a></li>
+					</ul>
+				</li>
+				<li><a href="../about_page/index.html">About</a></li>
+				<li id="mobile">
+					<a href="#" class="has-sub">Menu</a>
+					<ul>
+					  <li><a href="../index.html">Home</a></li>
+					  <li><a href="../about_page/index.html">About</a></li>
+					  <li><a href="../portfolio_page_1/index.html">Websites</a></li>
+					  <li><a href="../portfolio_page_2/index.html">Games</a></li>
+					  <li><a href="../portfolio_page_3/index.html">Arduino</a></li>
+					</ul>
+				</li>
+			</ul>
+		</section>  
+		
+		<section id="hero-img">
+			<div id="content">
+				<div id="text">
+					<h1>Arduino</h1>
+				</div>
+				
+			</div>
+			<!-- <img src="../assets/images/matrix.png" alt=""> -->
+		</section>
+		<section id="portfolio">
+			<div class="container">
+				<h1>Asteroids</h1>
+				<a class="anchor" id="asteroids"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>I recreated the classic arcade game Asteroids using Processing and the Arduino UNO. To control and move the space ship left and right, I used a potentiometer. To shoot missiles, the user presses a button.</p>
+					</div>
+					
+					<div id="vid" class="grid-item">
+						<video width="320" height="400" controls>
+						  <source src="../assets/images/port_3/Asteroids.mp4" type="video/mp4">
+						</video>
+					</div>
+					<a href="../assets/images/port_3/asteroids.png" data-lightbox="asteroid">
+						<div class="grid-item"><img src="../assets/images/port_3/asteroids.png" alt=""></div>
+					</a>
+				</div>
+				<h1>RC Car</h1>
+				<a class="anchor" id="rc_car"></a>
+				<div class="grid">
+					<div class="grid-item blurb">
+						<p>This is an RC Car built with an Arduino UNO. I downloaded a driver that allowed me to control it with an XBOX remote. To program this robot, I used the JavaScript library Johnny-Five JS.</p>
+					</div>
+					
+					<div id="vid" class="grid-item">
+						<video width="320" height="400" controls>
+						  <source src="../assets/images/port_3/rover.mp4" type="video/mp4">
+						</video>
+					</div>
+					<a href="../assets/images/port_3/rover_inside.jpg" data-lightbox="asteroid">
+						<div class="grid-item"><img src="../assets/images/port_3/rover_inside.jpg" alt=""></div>
+					</a>
+				</div>
+			</div>
+		</section>
+		<footer>
+			
+		</footer>
+		<script src="../js/lightbox.js"></script>
+	</body>
+</html>
