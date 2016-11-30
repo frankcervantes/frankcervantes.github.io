@@ -20,10 +20,31 @@ var bullets = [];
 var gameOver = false;
 var gameOverText = '';
 var timer;
-var shieldTimer;
+var shieldCounter = 0;
+
+//Zod's Song
+var song;
+
+function preload() {
+	LeftplayerGraphic = loadImage("assets/leftplayer.png");
+	RightplayerGraphic = loadImage("assets/rightplayer.png");
+	RightshieldGraphic = loadImage("assets/rightshieldplayer.png");
+	LeftshieldGraphic = loadImage("assets/leftshieldplayer.png");
+	enemyGraphic = loadImage("assets/enemy.png");
+	ladderGraphic = loadImage("assets/ladder.png");
+	backgroundGraphic = loadImage("assets/background.png");
+	bombGraphic = loadImage("assets/bomb.png");
+	platformGraphic = loadImage("assets/platform.png");
+	song = loadSound('assets/song.mp3');
+	hitSound = loadSound('assets/explosion.wav')
+	bDropSound = loadSound('assets/bDrop.mp3')
+	reloadSound = loadSound('assets/reload.wav')
+	shieldSound = loadSound('assets/charger.wav')
+}
 
 function setup() {
 	createCanvas(700, 1120);
+	song.play();
 	player1 = new Player();
 	player2 = new Enemy();
 	// GENERATE LADDERS AND PLATFORMS
@@ -56,6 +77,7 @@ function setup() {
 
 function draw() {
 	background(0);
+	image(backgroundGraphic,0,0);
 	for(var i=0;i<platforms.length; i++){
 		platforms[i].display()
 	}
@@ -74,7 +96,6 @@ function draw() {
 	if(gameOver == false){
 		timer = millis() / 1000;
 		text(int(timer), 10, 10);
-		shieldTimer = millis()/ 1000;
 		player1.display();
 		player1.bounds();
 		player1.move();
@@ -94,7 +115,6 @@ function draw() {
 
 		resolve();
 	}else{
-		document.getElementById("restart").innerHTML = "Restart?"
 
 	}
 	document.getElementById("time").innerHTML = int(timer)
@@ -118,6 +138,7 @@ function Platform(x,y,width = 700){
 	this.display = function(){
 	    fill(125,120,240);
 	    rect(this.x, this.y, this.width, this.height);
+		image(platformGraphic,this.x,this.y,this.width,this.height);
 	}
 	this.setY = function(y){
 		this.y = y;
@@ -133,10 +154,12 @@ function Ladder(x,y){
 	this.width = 40;
 	this.height = VERTICAL_SPACE;
 	this.display = function(){
-	    fill(150,207,100);
+	    fill(0);
 	    rect(this.x, this.y, this.width, this.height);
+		image(ladderGraphic,this.x,this.y);
 	}
 }
+
 
 //Player class
 function Player() {
@@ -151,12 +174,13 @@ function Player() {
    	this.shootRate = 3000;
    	this.shieldOn = false;
 	this.display = function() {
-		noStroke();
-		fill(100,240,255);
-		rect(this.x, this.y, this.diameter, this.diameter);
+		if(keyIsDown(LEFT_ARROW)){
+			image(LeftplayerGraphic,this.x,this.y);
+			} else { image(RightplayerGraphic,this.x,this.y);}
 		if(this.shieldOn){
-			fill(255,240,100)
-			rect(this.x, this.y, this.diameter, this.diameter);
+			if(keyIsDown(LEFT_ARROW)){
+			image(LeftshieldGraphic,this.x,this.y);
+			} else { image(RightshieldGraphic,this.x,this.y);}
 		}
 	}
 	//Prevents player from escaping screen
@@ -203,8 +227,10 @@ function Player() {
 		}
 	}
 	this.shield = function(){
-		if(keyIsDown(_M) && int(millis()/1000) < 10){
+		if(keyIsDown(_M) && shieldCounter < 300){
 			this.shieldOn = true;
+			shieldSound.play();
+			shieldCounter ++;
 		}else{
 			this.shieldOn = false;	
 		}
@@ -237,21 +263,21 @@ function Enemy(){
 	this.display = function() {
 		noStroke();
 		fill(255,100,100);
-		ellipse(this.x, this.y, this.diameter, this.diameter);
+		image(enemyGraphic,this.x,this.y);
 	}
 	//Prevents player from escaping screen
 	this.bounds = function(){
-		if(this.x > width-this.diameter/2){
-			this.x = width -this.diameter/2;
+		if(this.x > width-this.diameter/2 - 30){
+			this.x = width -this.diameter/2 - 30;
 		}
-		if(this.x < 0 + this.diameter/2){
-			this.x = 0 + this.diameter/2;
+		if(this.x < 0 + this.diameter/2 - 30){
+			this.x = 0 + this.diameter/2 - 30;
 		}
-		if(this.y < 0 + this.diameter/2){
-			this.y = 0 + this.diameter/2
+		if(this.y < 0 + this.diameter/2 - 30){
+			this.y = 0 + this.diameter/2 - 30
 		}
-		if(this.y > height-this.diameter/2){
-			this.y = height - this.diameter/2
+		if(this.y > height-this.diameter/2 - 30){
+			this.y = height - this.diameter/2 - 30
 		}
 	}
 	//Player controls
@@ -265,9 +291,9 @@ function Enemy(){
 	}
 	this.platformCollision = function() {
 		for(var i = 0;i<platforms.length;i++){
-			if((this.x > platforms[i].x && this.x < platforms[i].x + platforms[i].width)){
-				if((this.y + this.diameter/2 > platforms[i].y) && this.y + this.diameter/2 < platforms[i].y + platforms[i].height ) {
-					this.y = platforms[i].y - this.diameter/2;
+			if((this.x + this.diameter> platforms[i].x && this.x< platforms[i].x + platforms[i].width)){
+				if((this.y + this.diameter > platforms[i].y) && this.y + this.diameter < platforms[i].y + platforms[i].height ) {
+					this.y = platforms[i].y - this.diameter;
 					this.vy *= -bounceFactor;
 				}
 			}
@@ -276,9 +302,11 @@ function Enemy(){
 	this.shoot = function(){
 		if(keyIsDown(_SPACE)){
 			//Control players fire rate
+
 			var now = Date.now();
 			if (now - this.lastShootTime  < this.shootRate)  return;
 			this.lastShootTime = now;
+			bDropSound.play();
 			bullets.push(new Projectile(this.x+this.diameter/2,this.y))
 		}
 	}
@@ -295,7 +323,7 @@ function Projectile(x,y){
 	this.display = function(){
 		noStroke();
 		fill(230,200,150);
-		rect(this.x, this.y, this.width, this.height);
+		image(bombGraphic,this.x,this.y);
 	}
 	//Bullet movement. Bullet moves up or down depending if it's called by an enemy or player. 
 	this.move = function(){
@@ -324,24 +352,25 @@ function playerEnemyCollision(rect1,rect2){
 function resolve(){
 	if(playerEnemyCollision(player1,player2)){
 		gameOver = true;
-		gameOverText += 'Game Over, PLAYER1 WINS!'
+		gameOverText += 'Game Over, player 2 tagged, PLAYER 1 WINS!'
 		document.getElementById("results").innerHTML = gameOverText
 	}
 	if(int(timer) == 60){
 		gameOver = true;
-		gameOverText += 'Game Over, time, PLAYER2 WINS!'
+		gameOverText += 'Game Over, time, PLAYER 2 WINS!'
 		document.getElementById("results").innerHTML = gameOverText
 	}
 	if(player2.y > platforms[0].y + 30){
 		gameOver = true;
-		gameOverText += 'Game Over, player 2 fell, PLAYER1 WINS!'
+		gameOverText += 'Game Over, player 2 fell, PLAYER 1 WINS!'
 		document.getElementById("results").innerHTML = gameOverText
 	}
 	for(var i=0;i<bullets.length; i++){
 		if(bulletPlayerCollision(player1,bullets[i]) && player1.shieldOn == false){
 			bullets.splice(i,1)
 			gameOver = true;
-			gameOverText += 'Game Over, HIT, PLAYER2 WINS!'
+			gameOverText += 'Game Over, HIT, PLAYER 2 WINS!'
+			hitSound.play();
 			document.getElementById("results").innerHTML = gameOverText
 			break;
 		}
