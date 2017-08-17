@@ -7,10 +7,11 @@ const Post = (props) => {
 	const postId = props.propInfo.match.params.number;
 
 	const posts = props.data
-	const post = posts[postId-1]
+	const post = posts[postId - 1] 
 
 	return (
 		<div className="post">
+			<h1>{post.id}</h1>
 			<h1>{post.title}</h1>
 			<div className="post__meta">
 				<span className="post__author">By: {post.userId}</span>

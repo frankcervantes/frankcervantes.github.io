@@ -40,10 +40,12 @@ class App extends Component {
     });
   }
 
-  handleFormSubmit(formData){
+  handleFormSubmit(newPost){
     let posts = this.state.posts
-    formData["id"] = posts.length + 1
-    posts.unshift(formData)
+    console.log(posts.length);
+    newPost["id"] = posts.length + 1;
+    posts.push(newPost)
+    console.log(posts)
     this.setState({posts})
     
   }
@@ -62,7 +64,7 @@ class App extends Component {
   componentDidMount() {
     fetch(`http://jsonplaceholder.typicode.com/posts`)
       .then(result=>result.json())
-      .then(posts=>this.setState({posts:_.reverse(posts)}))
+      .then(posts=>this.setState({posts:(posts)}))
     let f = this.state.posts
     // _.shuffle()
     // _.shuffle(posts)
