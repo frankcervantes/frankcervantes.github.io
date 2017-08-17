@@ -21,8 +21,11 @@ export function itemsFetchDataSuccess(items){
 	}
 }
 
-export function itemsDecreaseStock(){
-
+export function alterStockPrice(stock){
+	return{
+		type : 'INCREMENT_TIMER',
+		stock
+	}
 }
 
 export function portfolioBuyStock(stock,quantity,myStocks){
@@ -45,24 +48,52 @@ export function portfolioSellStock(stock,quantity,myStocks){
 	}
 }
 
+export function updateCash(cash){
+	return{
+		type: 'PORTFOLIO_UPDATE_CASH',
+		cash
+	}
+}
+
+
 export function itemsFetchData(){
 	return (dispatch) => {
 		dispatch(itemsIsLoading(true));
 		var items = {
 			companies:{
 				companyA: {
-					price: 5,
+					price: 150,
 					quantity: 2,
 					buy:false
 				},
 				companyB: {
-					price: 1,
-					quantity: 4,
+					price: 93,
+					quantity: 1,
+					buy:false
+				},
+				companyC: {
+					price: 493,
+					quantity: 9,
+					buy:false
+				},
+				companyD: {
+					price: 342,
+					quantity: 2,
+					buy:false
+				},
+				companyE: {
+					price: 629,
+					quantity: 6,
+					buy:false
+				},
+				companyF: {
+					price: 196,
+					quantity: 3,
 					buy:false
 				}
 			},
 				portfolio:{
-					cash:100,
+					totalCash:1000,
 					myStocks:[]
 				}
 		};

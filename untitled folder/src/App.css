@@ -23,6 +23,6 @@
   to { transform: rotate(360deg); }
 }
 
-table, th, td {
+table, tbody th, thead th, thead td, tbody td {
     border: 1px solid black;
 }

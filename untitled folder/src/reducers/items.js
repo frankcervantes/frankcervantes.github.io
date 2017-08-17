@@ -1,23 +1,31 @@
+import { generateRandomValues } from '../helpers'
+
 const INITIAL_STATE = {
 	items:{
 		companies:{
-			companyA: {
-				price: 5,
-				quantity: 2,
-				buy:false
+				companyA: {
+					price: 150,
+					quantity: 2,
+					buy:false
+				},
+				companyB: {
+					price: 93,
+					quantity: 4,
+					buy:false
+				},
+				companyC: {
+					price: 493,
+					quantity: 4,
+					buy:false
+				}
 			},
-			companyB: {
-				price: 1,
-				quantity: 4,
-				buy:false
+			portfolio:{
+				totalCash:1000,
+				myStocks:[]
 			}
-		},
-		portfolio:{
-			cash:100
 		}
 	}
-	
-}
+
 export function itemsHasErrored(state = false, action){
 	switch(action.type) {
 		case 'ITEMS_HAS_ERRORED':
@@ -27,6 +35,7 @@ export function itemsHasErrored(state = false, action){
 	}
 }
 
+
 export function itemsIsLoading(state = false, action) {
 	switch(action.type) {
 		case 'ITEMS_IS_LOADING':
@@ -35,6 +44,10 @@ export function itemsIsLoading(state = false, action) {
 			return state;
 	}
 }
+
+
+
+
 
 export function items(state = INITIAL_STATE,action) {
 	// [state.companies[targetComp].quantity]: state.companies[targetComp].quantity++ }
@@ -77,7 +90,28 @@ export function items(state = INITIAL_STATE,action) {
 					}  	           
 		        }
 		    }
-		default:
+		case 'PORTFOLIO_UPDATE_CASH':
+			console.log(action.cash)
+			return{
+					...state,
+				 portfolio : {
+					...state.portfolio,
+					totalCash:action.cash         
+		        }
+			}
+		case 'INCREMENT_TIMER':
+			console.log(state.companies[action.stock].price)
+			return {
+		         ...state,
+		        companies : {
+					...state.companies,
+					[action.stock]:{
+						...state.companies[action.stock],
+						price: generateRandomValues()
+					}            
+		        }		       
+		    }
+		default: 
 			return state;
 	}
 }

@@ -11,8 +11,9 @@ const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
     	<div>
-    		<PurseView />
+    		
         	<StockView />
+        	<PurseView />
     	</div>
     </Provider>,
     document.getElementById('root')
